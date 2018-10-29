@@ -86,8 +86,34 @@ int main()
     SAM.init();
     for(int i=0;i<len;++i) SAM.add(s[i]-'a');
     printf("%d\n",SAM.find(s));
+    /*the minimum represent:S+S:L[now]-len+1;
+    for(int i = 0; i < len; i++)
+    for(int j = 0; j < 26; j++) if(nxt[now][j] != NULL)
+    {
+        now=nxt[now][j];
+        break;
+    }
+    */
     return 0;
 }
 /*
 L[i]-L[f[i]]:number of different substrings
 */
+/*the minimum represent:S+S:L[now]-len+1;*/
+int minrepresent(char *s)
+{
+    int i=0,j=1,k=0;
+    int len=strlen(s);
+    while(i<len&&j<len&&k<len)
+    {
+        if(s[(i+k)%len]==s[(j+k)%len])k++;
+        else
+        {
+            if(s[(i+k)%len]>s[(j+k)%len])i=i+k+1;
+            else j=j+k+1;
+            if(i==j)j++;
+            k=0;
+        }
+    }
+    return i<j?i:j;
+}
