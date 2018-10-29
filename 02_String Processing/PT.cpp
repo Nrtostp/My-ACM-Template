@@ -49,3 +49,14 @@ int main()
     for(int i=2;i<PT.L;++i) ??
     return 0;
 }
+/*the number of two string' same Palindromes pairs*/
+long long dfs(int u,int v)
+{
+    long long tmp=0;
+    for(int i=0;i<26;++i) if(PT1.nxt[u][i]&&PT2.nxt[v][i])
+    {
+        tmp+=1ll*PT1.cnt[PT1.nxt[u][i]]*PT2.cnt[PT2.nxt[v][i]];
+        tmp+=dfs(PT1.nxt[u][i],PT2.nxt[v][i]);
+    }
+    return tmp;
+}
