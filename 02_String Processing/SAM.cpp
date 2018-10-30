@@ -80,6 +80,23 @@ struct Tire
         memset(ans,0,sizeof(ans));
         for(int i=1;i<=tot;++i) ans[L[i]]=max(ans[L[i]],rt[i]);//the max number of length L[i] strings
     }
+    /*
+    int who[maxn], a[maxn];
+    void Sort() {
+    	for(int i = 1; i <= tot; i++) a[i] = 0;
+        for(int i = 1; i <= tot; i++) a[L[i]]++;
+        for(int i = 1; i <= tot; i++) a[i] += a[i - 1];
+        for(int i = 1; i <= tot; i++) who[a[L[i]]--] = i;
+        /*for(int i = tot; i >= 1; i--) {
+            ll sum = 0;
+            int p = who[i];
+            for(int j = 0; j < 26; j++)
+                if(~nxt[p][j]) sum += dp[nxt[p][j]];
+            dp[p] = sum + 1;
+        */
+        }
+    }
+    */
 }SAM;
 int main()
 {
@@ -96,20 +113,18 @@ int main()
     */
     return 0;
 }
-/*
-L[i]-L[f[i]]:number of different substrings
-*/
-/*the minimum represent:S+S:L[now]-len+1;*/
+/*L[i]-L[f[i]]:number of different substrings*/
+/*the minimum represent*/
 int minrepresent(char *s)
 {
     int i=0,j=1,k=0;
     int len=strlen(s);
     while(i<len&&j<len&&k<len)
     {
-        if(s[(i+k)%len]==s[(j+k)%len])k++;
+        if(s[(i+k)%len]==s[(j+k)%len]) k++;
         else
         {
-            if(s[(i+k)%len]>s[(j+k)%len])i=i+k+1;
+            if(s[(i+k)%len]>s[(j+k)%len]) i=i+k+1;
             else j=j+k+1;
             if(i==j)j++;
             k=0;
