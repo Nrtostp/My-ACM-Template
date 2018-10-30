@@ -49,17 +49,18 @@ void moblus()
             else {mu[i*prim[j]]=0;break;}
         }
     }
-    for(int i=2;i<MAX;++i) mu[i]+=mu[i-1];
+    for(int i=2;i<MAX;++i) mu[i]+=mu[i-1];//phi same
 }
 long long M(long long x)
 {
     if(x<MAX) return mu[x];
     if(dp[x]) return dp[x];
-    long long sum=1;//phi->x*(x+1)/2;
+    long long sum=1;//sum=0 phi->x*(x+1)/2;
     for(long long l=2,r;l<=x;l=r+1)
     {
         r=x/(x/l);
         sum-=M(x/l)*(r-l+1);
+        //sum+=M(x/l)*(r-l+1)
     }
-    return dp[x]=sum;
+    return dp[x]=sum;//dp[x]=x*(x+1)/2-sum
 }
