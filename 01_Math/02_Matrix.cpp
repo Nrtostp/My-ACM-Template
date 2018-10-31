@@ -1,8 +1,4 @@
-struct Mat
-{
-    long long m[3][3];
-    Mat(){memset(m,0,sizeof(m));}
-};
+struct Mat{long long m[3][3];Mat(){memset(m,0,sizeof(m));}};
 Mat multi(const Mat &a,const Mat &b)
 {
     Mat c;
@@ -16,11 +12,6 @@ Mat pow(Mat &a,int k)
 {
     Mat b;
     for(int i=0;i<3;i++) b.m[i][i]=1;
-    while(k)
-    {
-        if(k&1) b=multi(b,a);
-        a=multi(a,a);
-        k>>=1;
-    }
+    while(k){if(k&1) b=multi(b,a);a=multi(a,a);k>>=1;}
     return b;
 }
