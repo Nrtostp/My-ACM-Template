@@ -6,8 +6,7 @@ struct Trie
     int newnode()
     {
         for(int i=0;i<MAXN;++i) nxt[L][i]=-1;
-        e[L++]=0;
-        return L-1;
+        e[L++]=0;return L-1;
     }
     void init(){L=0;rt=newnode();}
     void insert(char *buf)
@@ -79,18 +78,18 @@ struct Trie
 int main()
 {
     AC.init();for(){AC.insert(char []);}AC.build();
-	/* get g[][] and then dp find a shortest path */
-	pos[0]=0;cnt=1;
+    /* get g[][] and then dp find a shortest path */
+    pos[0]=0;cnt=1;
     for(int i=0;i<AC.L;++i)if(AC.e[i]>0) pos[cnt++]=i;
     for(int i=0;i<cnt;++i) AC.spfa(i);
-	/* dp */
-	int xi=AC.nxt[i][j],xhash=hash|?;//save the state
-	dp[xi][xhash]=max(dp[xi][xhash],dp[i][hash]+AC.e[xi]);
-	for(int i=0;i<AC.L;++i) ans=max(ans,dp[i][hash]);
-	/*if resort the string and find a special string,please be careful about the cnt[char] can be max like that */
-	for(int j=0;j<AC.MAXN;++j) {if(j==0&&a==cnt[0]) continue;}
-	/*less val and less string */
-	strcpy(str[0][0],"");strcpy(ans,"");
+    /* dp */
+    int xi=AC.nxt[i][j],xhash=hash|?;//save the state
+    dp[xi][xhash]=max(dp[xi][xhash],dp[i][hash]+AC.e[xi]);
+    for(int i=0;i<AC.L;++i) ans=max(ans,dp[i][hash]);
+    /*if resort the string and find a special string,please be careful about the cnt[char] can be max like that */
+    for(int j=0;j<AC.MAXN;++j) {if(j==0&&a==cnt[0]) continue;}
+    /*less val and less string */
+    strcpy(str[0][0],"");strcpy(ans,"");
     int max_=0;
     for(int i=0;i<n;++i)
     for(int j=0;j<AC.L;++j)if(dp[i][j]>=0)
