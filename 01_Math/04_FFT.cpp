@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 const int MAX=1<<17;
 const double PI=acos(-1.0);
 typedef complex<double> C;
