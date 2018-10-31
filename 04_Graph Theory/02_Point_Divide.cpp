@@ -63,17 +63,11 @@ int divide(int u)
 }
 int main()
 {
-    int x,y,z;
     while(~scanf("%d%d",&n,&m))
     {
         if(n==0&&m==0) break;init();
-        for(int i=1;i<n;++i)
-        {
-            scanf("%d%d%d",&x,&y,&z);
-            adde(x,y,z);
-        }
-        maxp[rt]=sum=n;
-        getrt(1,0);
+        for(int i=1;i<n;++i){scanf("%d%d%d",&x,&y,&z);adde(x,y,z);}
+        maxp[rt]=sum=n;getrt(1,0);
         printf("%d\n",divide(rt));
     }
     return 0;
