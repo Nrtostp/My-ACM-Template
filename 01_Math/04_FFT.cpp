@@ -1,10 +1,8 @@
 const int MAX=1<<17;
 const double PI=acos(-1.0);
 typedef complex<double> C;
-map<int,int>mp;
-map<int,int>::iterator p;
-C a1[MAX],a2[MAX],a3[MAX],ans[MAX];
-int n,L,cnt[MAX];
+map<int,int>mp;map<int,int>::iterator p;
+C a1[MAX],a2[MAX],a3[MAX],ans[MAX];int n,L,cnt[MAX];
 void rader(C *c_)
 {
     int i,j,k;
@@ -39,17 +37,14 @@ void fft(C *c_,int v)
 }
 int main()
 {
-    int x;
-    scanf("%d",&n);
-    mp.clear();
+    int x;scanf("%d",&n);mp.clear();
     for(int i=0;i<n;++i)
     {
         scanf("%d",&x);x+=20000;
         if(mp[x]) ++mp[x];
         else mp[x]=1;
     }
-    for(p=mp.begin();p!=mp.end();++p) a1[p->first]=a2[p->first*2]=a3[p->first*3]=C(p->second,0);
-    L=MAX;
+    for(p=mp.begin();p!=mp.end();++p) a1[p->first]=a2[p->first*2]=a3[p->first*3]=C(p->second,0);L=MAX;
     /*L=1;while(L<L1<<1||L<L2<<1) L<<=1;
       L=L1+L2-1;while(ans[L]<=0&&L>0) --L;*/
     fft(a1,1);fft(a2,1);fft(a3,1);
