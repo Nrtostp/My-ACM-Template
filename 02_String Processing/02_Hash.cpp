@@ -10,11 +10,11 @@ bool check(int l1,int r1,int l2,int r2)
 int main()
 {
     power[0]=1;for(int i=1;i<MAX-1;++i) power[i]=power[i-1]*P;
- 	L=strlen(s+1);
+    L=strlen(s+1);
     ha1[0]=ha2[L+1]=0;
     for(int i=1;i<=L;++i) ha1[i]=ha1[i-1]*P+s[i]-'a';
     for(int i=L;i>=1;--i) ha2[i]=ha2[i+1]*P+s[i]-'a';
-	while(l<=r){mid;if(check(i-mid,i-1,i+mid,i+1));else;}// fen ji&ou
+  	while(l<=r){mid;if(check(i-mid,i-1,i+mid,i+1));else;}// fen ji&ou
 }
 /*multi hash */
 const int HASH=10;
@@ -30,8 +30,7 @@ bool check(int index,int x,int len)
 }
 bool check(int x,int len)
 {
-    for(int i=0;i<HASH;i++)
-        if(!check(i,x,len)) return false;
+    for(int i=0;i<HASH;i++) if(!check(i,x,len)) return false;
     return true;
 }
 int main()
