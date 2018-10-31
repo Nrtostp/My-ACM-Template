@@ -5,14 +5,12 @@ struct Tire
     int nxt[MAX][MAXN],f[MAX],L[MAX],last,tot;
     void init()
     {
-        last=tot=0;
-        memset(nxt[0],-1,sizeof(nxt[0]));
+        last=tot=0;memset(nxt[0],-1,sizeof(nxt[0]));
         f[0]=-1;L[0]=0;
     }
     void add(int x)
     {
-        int p=last,np=++tot;
-        L[np]=L[p]+1;
+        int p=last,np=++tot;L[np]=L[p]+1;
         memset(nxt[np],-1,sizeof(nxt[np]));
         while(~p&&nxt[p][x]==-1) nxt[p][x]=np,p=f[p];
         if(p==-1) f[np]=0;
@@ -24,8 +22,7 @@ struct Tire
                 int nq=++tot;
                 L[nq]=L[p]+1;
                 memcpy(nxt[nq],nxt[q],sizeof(nxt[q]));
-                f[nq]=f[q];
-                f[q]=f[np]=nq;
+                f[nq]=f[q]; f[q]=f[np]=nq;
                 while(~p&&nxt[p][x]==q) nxt[p][x]=nq,p=f[p];
             }
             else f[np]=q;
@@ -77,20 +74,19 @@ struct Tire
         memset(ans,0,sizeof(ans));
         for(int i=1;i<=tot;++i) ans[L[i]]=max(ans[L[i]],rt[i]);//the max number of length L[i] strings
     }
-    /*
-    int who[maxn], a[maxn];
-    void Sort() {
-    	for(int i = 1; i <= tot; i++) a[i] = 0;
-        for(int i = 1; i <= tot; i++) a[L[i]]++;
-        for(int i = 1; i <= tot; i++) a[i] += a[i - 1];
-        for(int i = 1; i <= tot; i++) who[a[L[i]]--] = i;
-        /*for(int i = tot; i >= 1; i--) {
-            ll sum = 0;
-            int p = who[i];
-            for(int j = 0; j < 26; j++)
-                if(~nxt[p][j]) sum += dp[nxt[p][j]];
-            dp[p] = sum + 1;
-        */
+    /*int who[maxn], a[maxn];*/
+    void sort()
+    {
+    	for(int i=1;i<=tot;i++) a[i]=0;
+        for(int i=1;i<=tot;i++) a[L[i]]++;
+        for(int i=1;i<=tot;i++) a[i]+=a[i-1];
+        for(int i=1;i<=tot;i++) who[a[L[i]]--]=i;
+        /* dp */
+        for(int i=tot;i>=1;i--)
+        {
+            long long sum=0;int p=who[i];
+            for(int j=0;j<26;j++) if(~nxt[p][j]) sum+=dp[nxt[p][j]];
+            dp[p]=sum+1;
         }
     }
     */
@@ -99,14 +95,9 @@ int main()
 {
     SAM.init();for(int i=0;i<len;++i) SAM.add(s[i]-'a');
     printf("%d\n",SAM.find(s));
-    /*the minimum represent:S+S:L[now]-len+1;
+    /*the minimum represent:S+S:L[now]-len+1; */
     for(int i = 0; i < len; i++)
-    for(int j = 0; j < 26; j++) if(nxt[now][j] != NULL)
-    {
-        now=nxt[now][j];
-        break;
-    }
-    */
+    for(int j = 0; j < 26; j++) if(nxt[now][j] != NULL){now=nxt[now][j];break;}
     return 0;
 }
 /*L[i]-L[f[i]]:number of different substrings*/
