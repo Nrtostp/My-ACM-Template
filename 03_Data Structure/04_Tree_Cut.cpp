@@ -1,18 +1,6 @@
-#include<bits/stdc++.h>
-using namespace std;
-const int MAX=1e5+5;
-struct P
-{
-    int to,nxt;
-}e[MAX<<1];
-struct Px
-{
-    int l,r,v;
-    Px(){l=r=-1;v=0;}
-    void is(int a1,int a2,int a3){l=a1;r=a2;v=a3;}
-}b[MAX<<2];
-int head[MAX],top[MAX],fa[MAX],deep[MAX],num[MAX],p[MAX],fp[MAX],son[MAX],tot,pos;
-int n,m,a[MAX],lz[MAX<<2];
+struct P{int to,nxt;}e[MAX<<1];
+struct Px{int l,r,v;Px(){l=r=-1;v=0;}void is(int a1,int a2,int a3){l=a1;r=a2;v=a3;}}b[MAX<<2];
+int head[MAX],top[MAX],fa[MAX],deep[MAX],num[MAX],p[MAX],fp[MAX],son[MAX],tot,pos,n,m,a[MAX],lz[MAX<<2];
 void init()
 {
     tot=0;pos=1;
@@ -123,28 +111,11 @@ int query(int l,int r)
 }
 int main()
 {
-    int x,y,z;char c[10];
     while(~scanf("%d%d",&n,&m))
     {
         init();
-        for(int i=1;i<=n;++i) scanf("%d",&a[i]);
-        for(int i=1;i<n;++i) {scanf("%d%d",&x,&y);adde(x,y);}
         dfs(1,0,0);getpos(1,1);
         build(1,1,n);
-        while(m--)
-        {
-            scanf("%s",c);
-            if(c[0]=='C')
-            {
-                scanf("%d%d%d",&x,&y,&z);
-                update(x,y,z);
-            }
-            else
-            {
-                scanf("%d%d",&x,&y);
-                printf("%d\n",query(x,y));
-            }
-        }
     }
     return 0;
 }
