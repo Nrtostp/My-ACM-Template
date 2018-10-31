@@ -78,9 +78,7 @@ struct Trie
 }AC;
 int main()
 {
-    AC.init();
-	for(){AC.insert(char []);}
-	AC.build();
+    AC.init();for(){AC.insert(char []);}AC.build();
 	/* get g[][] and then dp find a shortest path */
 	pos[0]=0;cnt=1;
     for(int i=0;i<AC.L;++i)if(AC.e[i]>0) pos[cnt++]=i;
