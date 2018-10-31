@@ -1,13 +1,10 @@
 int euler(int n)
 {
     int ans=n;
-    for(int i=2;i*i<=n;i++)
+    for(int i=2;i*i<=n;i++)if(n%i==0)
     {
-        if(n%i==0)
-        {
-            ans-=ans/i;
-            while(n%i==0) n/=i;
-        }
+        ans-=ans/i;
+        while(n%i==0) n/=i;
     }
     if(n>1) ans-=ans/n;
     return ans;
@@ -33,8 +30,7 @@ void phi_prim(int n)
 }
 /* mo and du*/
 const int MAX=1e7+5;
-bool vis[MAX];
-int prim[MAX],mu[MAX],fac[MAX],tot,pcnt;
+bool vis[MAX];int prim[MAX],mu[MAX],fac[MAX],tot,pcnt;
 map<long long,long long>dp;
 void moblus()
 {
