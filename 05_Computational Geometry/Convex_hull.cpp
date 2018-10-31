@@ -10,15 +10,15 @@ struct point
     {
         x=a;y=b;
     }
-    point operator -(const point &a)const//向量差
+    point operator -(const point &a)const
     {
         return point(x-a.x,y-a.y);
     }
-    double operator ^(const point &a)const//向量叉乘
+    double operator ^(const point &a)const
     {
         return x*a.y-y*a.x;
     }
-    double operator *(const point &a)const//向量点乘
+    double operator *(const point &a)const
     {
         return x*a.x+y*a.y;
     }
@@ -172,7 +172,7 @@ double dis(point a,point b)
 {
     return (a-b)*(a-b);
 }
-double dist(point a,point b,point c)//Line Dis
+double dist(point a,point b,point c)//Point Line Dis
 {
     point d;
     double t=multi(b,a,c)/dis(b,c);
