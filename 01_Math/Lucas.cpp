@@ -35,7 +35,7 @@ int main()
     }
     return 0;
 }
-/* Chinese Left */
+/* Chinese Left -MOD=m1*m2*m3...mx*/
 #include<bits/stdc++.h>
 using namespace std;
 const int MAX=1e5+5;
