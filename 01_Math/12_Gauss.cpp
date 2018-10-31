@@ -8,9 +8,7 @@ bool gauss()
     for(k=0,col=0;k<equ&&col<var;++k,++col)
     {
         max_r=k;
-        for(i=k+1;i<equ;++i)
-            if(fabs(a[i][col])>fabs(a[max_r][col]))
-                max_r=i;
+        for(i=k+1;i<equ;++i) if(fabs(a[i][col])>fabs(a[max_r][col])) max_r=i;
         if(fabs(a[max_r][col])<eps) return 0;
         if(k!=max_r)
         {
@@ -20,13 +18,12 @@ bool gauss()
         x[k]/=a[k][col];
         for(j=col+1;j<var;++j) a[k][j]/=a[k][col];
         a[k][col]=1.0;
-        for(i=0;i<equ;++i)
-            if(i!=k)
-            {
-                x[i]-=x[k]*a[i][col];
-                for(j=col+1;j<var;++j) a[i][j]-=a[k][j]*a[i][col];
-                a[i][col]=0.0;
-            }
+        for(i=0;i<equ;++i) if(i!=k)
+        {
+            x[i]-=x[k]*a[i][col];
+            for(j=col+1;j<var;++j) a[i][j]-=a[k][j]*a[i][col];
+            a[i][col]=0.0;
+        }
     }
     return 1;
 }
