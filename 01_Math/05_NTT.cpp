@@ -1,31 +1,13 @@
-/*
-MOD：469762049、998244353、1004535809
-*/
-#include<bits/stdc++.h>
-using namespace std;
-const int MAX=2e5+5;
-const long long MOD=998244353;
-const int g=3;
-long long fact[MAX],inv[MAX],bit[MAX],a[MAX<<1],b[MAX<<1],c[MAX],ni;
-int t,n,L;
-long long pow(long long a,int k,long long mod)//快速幂取模
-{
-    long long b=1;
-    while(k)
-    {
-        if(k&1) b=b*a%mod;
-        a=a*a%mod;
-        k>>=1;
-    }
-    return b;
-}
+/* MOD：469762049、998244353、1004535809 ;this problem need pow*/
+const int g=3;//in this problem
+long long fact[MAX],inv[MAX],bit[MAX],a[MAX<<1],b[MAX<<1],c[MAX],ni;int t,n,L;
 void init()
 {
     fact[0]=inv[0]=bit[0]=1;
     for(int i=1;i<MAX;i++)
     {
         fact[i]=fact[i-1]*i%MOD;
-        inv[i]=inv[i-1]*pow(i,MOD-2,MOD)%MOD;//利用欧拉函数的积性
+        inv[i]=inv[i-1]*pow(i,MOD-2,MOD)%MOD;
         bit[i]=bit[i-1]*2%MOD;
     }
 }
@@ -64,14 +46,11 @@ void ntt(long long *f_,int t)
 }
 int main()
 {
-    init();
-    scanf("%d",&t);
+    init();scanf("%d",&t);
     while(t--)
     {
-        memset(a,0,sizeof(a));
-        memset(b,0,sizeof(b));
-        scanf("%d",&n);
-        L=1;
+        memset(a,0,sizeof(a));memset(b,0,sizeof(b));
+        scanf("%d",&n);L=1;
         while(L<n<<1) L<<=1;
         ni=pow(L,MOD-2,MOD);
         for(int i=1;i<=n;++i) scanf("%I64d",&c[i]);
@@ -91,7 +70,6 @@ int main()
             r=r*inv[2]%MOD;
             printf("%I64d ",ans);
         }
-        printf("\n");
     }
     return 0;
 }
