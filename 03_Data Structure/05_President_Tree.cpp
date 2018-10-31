@@ -1,17 +1,8 @@
 /the k-max number of region */
-#include<bits/stdc++.h>
-using namespace std;
-const int MAX=1e5+5;
 int root[MAX],a[MAX],n,m,cnt;
-struct P
-{
-    int l,r,v;
-}b[MAX*25];
+struct P{int l,r,v;}b[MAX*25];
 vector<int >v;
-int id(int x)
-{
-    return lower_bound(v.begin(),v.end(),x)-v.begin()+1;
-}
+int id(int x){return lower_bound(v.begin(),v.end(),x)-v.begin()+1;}
 void update(int l,int r,int &x,int y,int pos)
 {
     b[++cnt]=b[y];++b[cnt].v;x=cnt;
@@ -30,7 +21,6 @@ int query(int l,int r,int x,int y,int k)
 }
 int main()
 {
-    int x,y,k;
     while(~scanf("%d%d",&n,&m))
     {
         cnt=0;v.clear();
