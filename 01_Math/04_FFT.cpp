@@ -5,8 +5,7 @@ map<int,int>mp;map<int,int>::iterator p;
 C a1[MAX],a2[MAX],a3[MAX],ans[MAX];int n,L,cnt[MAX];
 void rader(C *c_)
 {
-    int i,j,k;
-    for(i=1,j=L/2;i<L-1;++i)
+    for(int i=1,j=L/2,k;i<L-1;++i)
     {
         if(i<j) swap(c_[i],c_[j]);
         k=L/2;
