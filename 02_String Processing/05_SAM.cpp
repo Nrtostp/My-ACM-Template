@@ -1,7 +1,4 @@
-/*
-2 string LCA
-multi string LCA
-*/
+/*2 string LCA and multi string LCA */
 struct Tire
 {
     static const int MAXN=26;
@@ -100,8 +97,7 @@ struct Tire
 }SAM;
 int main()
 {
-    SAM.init();
-    for(int i=0;i<len;++i) SAM.add(s[i]-'a');
+    SAM.init();for(int i=0;i<len;++i) SAM.add(s[i]-'a');
     printf("%d\n",SAM.find(s));
     /*the minimum represent:S+S:L[now]-len+1;
     for(int i = 0; i < len; i++)
@@ -124,10 +120,8 @@ int minrepresent(char *s)
         if(s[(i+k)%len]==s[(j+k)%len]) k++;
         else
         {
-            if(s[(i+k)%len]>s[(j+k)%len]) i=i+k+1;
-            else j=j+k+1;
-            if(i==j)j++;
-            k=0;
+            if(s[(i+k)%len]>s[(j+k)%len]) i=i+k+1; else j=j+k+1;
+            if(i==j) ++j; k=0;
         }
     }
     return i<j?i:j;
