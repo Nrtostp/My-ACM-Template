@@ -10,19 +10,14 @@ bool dfs(int u)
         if(!used[v])
         {
             used[v]=1;
-            if(linker[v]==-1||dfs(linker[v]))
-            {
-                linker[v]=u;
-                return 1;
-            }
+            if(linker[v]==-1||dfs(linker[v])){linker[v]=u;return 1;}
         }
     }
     return 0;
 }
 int hungary()
 {
-    int res=0;
-    memset(linker,-1,sizeof(linker));
+    int res=0;memset(linker,-1,sizeof(linker));
     for(int u=1;u<=n;u++)
     {
         memset(used,0,sizeof(used));
@@ -48,8 +43,7 @@ bool dfs(int u)
 }
 int hungary()
 {
-    memset(linker,-1,sizeof(linker));
-    memset(vlink,0,sizeof(vlink));
+    memset(linker,-1,sizeof(linker));memset(vlink,0,sizeof(vlink));
     for(int u=1;u<=n;u++)
     {
         memset(used,0,sizeof(used));
@@ -79,32 +73,24 @@ int dfs(int x)
 int km()
 {
     int i,j;
-    memset(linker,-1,sizeof(linker));
-    memset(ly,0,sizeof(ly));
+    memset(linker,-1,sizeof(linker)); memset(ly,0,sizeof(ly));
     for(i=1;i<=nx;i++)
-    for(j=1,lx[i]=-INF;j<=ny;j++)
-        if(w[i][j]>lx[i]) lx[i]=w[i][j];
+    for(j=1,lx[i]=-INF;j<=ny;j++) if(w[i][j]>lx[i]) lx[i]=w[i][j];
     for(int x=1;x<=nx;x++)
     {
         for(i=1;i<=ny;i++) slack[i]=INF;
         while(1)
         {
-            memset(visx,0,sizeof(visx));
-            memset(visy,0,sizeof(visy));
+            memset(visx,0,sizeof(visx)); memset(visy,0,sizeof(visy));
             if(dfs(x)) break;
             int d=INF;
-            for(i=1;i<=ny;i++)
-                if(!visy[i] && d>slack[i]) d=slack[i];
-            for(i=1;i<=nx;i++)
-                if(visx[i]) lx[i]-=d;
-            for(i=1;i<=ny;i++)
-                if(visy[i]) ly[i]+=d;
-                else slack[i]-=d;
+            for(i=1;i<=ny;i++) if(!visy[i] && d>slack[i]) d=slack[i];
+            for(i=1;i<=nx;i++) if(visx[i]) lx[i]-=d;
+            for(i=1;i<=ny;i++) if(visy[i]) ly[i]+=d; else slack[i]-=d;
         }
     }
     int res=0;
-    for(i=1;i<=ny;i++)
-        if(linker[i]!=-1) res+=w[linker[i]][i];
+    for(i=1;i<=ny;i++) if(linker[i]!=-1) res+=w[linker[i]][i];
     return res;
 }
 int main()
@@ -124,8 +110,7 @@ int main()
             }
         }
         for(int k=1;k<=top1;k++)
-        for(int i=1;i<=top2;i++)
-            w[k][i]=-abs(a[k].x-b[i].x)-abs(a[k].y-b[i].y);
+        for(int i=1;i<=top2;i++) w[k][i]=-abs(a[k].x-b[i].x)-abs(a[k].y-b[i].y);
         nx=top1;ny=top2;
         printf("%d\n",-km());
     }
