@@ -45,6 +45,7 @@ int cal(int u,int ct)
     sort(rem+1,rem+rem[0]+1);
     int l=1,r=rem[0],x=0;
     while(l<r) if(rem[l]+rem[r]<=m){x+=r-l;++l;} else --r;
+    //=c:for(int l=1;l<r;++l){while(rem[l]+rem[r]==m) ++x;--r;}
     return x;
 }
 int divide(int u)
