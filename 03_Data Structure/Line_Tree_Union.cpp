@@ -1,3 +1,4 @@
+int ls[MAX<<6],rs[MAX<<6],val[MAX<<6],d[MAX],rt[MAX],cnt;
 void update(int &x,int l,int r,int p,int v)
 {
     x=++cnt;if(l==r){val[x]=v;return;}
