@@ -18,12 +18,5 @@ long long inv_(long long a,long long m)
     if(a==1) return 1;
     return inv_(m%a,m)*(m-m/a)%m;
 }
-long long inv_(long long a,long long mod)
-{
-    return pow(a,mod-2,mod);
-}
-void inv_()
-{
-    inv[0]=inv[1]=1;
-    for(int i=2;i<MAX;++i) inv[i]=((MOD-MOD/i)*inv[MOD%i])%MOD;
-}
+long long inv_(long long a,long long mod){return pow(a,mod-2,mod);}
+void inv_(){inv[0]=inv[1]=1;for(int i=2;i<MAX;++i) inv[i]=((MOD-MOD/i)*inv[MOD%i])%MOD;}
