@@ -1,8 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-const int MAX=1e5+1;
-long long n,m,MOD;
-long long fact[MAX];
+long long n,m,MOD,fact[MAX];
 inline long long inv_(long long a)
 {
     if(a==1) return 1;
@@ -25,32 +21,19 @@ inline long long lucas(long long a,long long b)
 }
 int main()
 {
-    int t;
-    scanf("%d",&t);
+    int t;scanf("%d",&t);
     while(t--)
     {
-        scanf("%I64d%I64d%I64d",&n,&m,&MOD);
-        init();
+        scanf("%I64d%I64d%I64d",&n,&m,&MOD);init();
         printf("%I64d\n",lucas(n+m,m));
     }
     return 0;
 }
-/* Chinese Left -MOD=m1*m2*m3...mx*/
+/* Chinese Left -MOD=m1*m2*m3...mx need pow.cpp*/
 #include<bits/stdc++.h>
 using namespace std;
 const int MAX=1e5+5;
 long long n,m,k,MOD,ans[MAX],m1[MAX];
-long long pow(long long a,int k,long long mod)//快速幂取模
-{
-    long long b=1;
-    while(k)
-    {
-        if(k&1) b=b*a%mod;
-        a=a*a%mod;
-        k>>=1;
-    }
-    return b;
-}
 inline long long C(long long a,long long b)
 {
     if(b>a) return 0;
@@ -102,8 +85,7 @@ long long china()
 }
 int main()
 {
-    int t;
-    scanf("%d",&t);
+    int t;scanf("%d",&t);
     while(t--)
     {
         scanf("%I64d%I64d%I64d",&n,&m,&k);
